@@ -1,0 +1,26 @@
+class Solution:
+    def roundToNearest (self, stri) : 
+        #Complete the function
+        def helper(stri):
+            stri = list(stri)
+            i = len(stri)-1
+            while i>=0 and stri[i] =="9":
+                stri[i] = "0"
+                i-=1
+            if i == -1:
+                stri = "1" + "".join(stri)
+            else:
+                stri[i] = str(int(stri[i])+1)
+                stri = "".join(stri)
+            return stri
+        n = len(stri)
+        if stri[-1] <="5":
+            stri = stri[:n-1] + "0"
+        else:
+            stri = helper(stri[:n-1]) + "0"
+        return stri
+for _ in range(0, int(input())):
+    num_str = input()
+    ob = Solution()
+    res = ob.roundToNearest(num_str)
+    print(res)
